@@ -1,6 +1,6 @@
 ## Inspiration
 We wanted to build a **Decentralized Voting System using Blockchain** .After read the hackathon readme file we wanted to made a vue app on the algo-testnet . In their People can Vote their Favourite team . we are making this voting app of the state cricket teams.
- **Using blockchain, voting process can be made more secure, transparent, immutable, and reliable. **
+ **Using blockchain, voting process can be made more secure, transparent, immutable, and reliable
 
 ## Advantages
 * You can vote anytime/anywhere (During Pandemics like COVID-19 where it’s impossible to hold elections physically.
@@ -26,4 +26,4 @@ We made this application using vue as a frontend and pyteal as our backend.
 
 ## What's next for ALGO VOTING
 We are adding Some more feature soon.
-**<--------- THANK YOU -------->
+//--<--------- THANK YOU -------->--//
