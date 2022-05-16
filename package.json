@@ -12,7 +12,7 @@
     "core-js": "^3.6.5",
     "js-base64": "^3.6.1",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.10",
+    "vue-router": "^4.0.15",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
