@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint"
   },
    "dependencies": {
-    "algosdk": "^1.24.1",
+    "algosdk": "^2.0.0",
     "core-js": "^3.24.1",
     "js-base64": "^3.7.3",
     "vue": "^3.0.0",
