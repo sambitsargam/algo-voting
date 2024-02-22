@@ -10,7 +10,7 @@
    "dependencies": {
     "algosdk": "^2.7.0",
     "core-js": "^3.36.0",
-    "js-base64": "^3.7.6",
+    "js-base64": "^3.7.7",
     "vue": "^3.0.0",
     "vue-router": "^4.3.0",
     "vuex": "^4.0.2"
