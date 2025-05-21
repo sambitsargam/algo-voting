@@ -42,7 +42,7 @@ export default defineComponent({
 <style scoped>
 
 header {
-    background-color: white;
+    background-color: #f8f9fa;
     position: fixed;
     top: 0;
     left: 0;
@@ -50,7 +50,9 @@ header {
     height: 80px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #AAAAAA;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
 header * {
@@ -63,21 +65,26 @@ header li {
 }
 
 header li a {
-    color: black;
+    color: #343a40;
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header li a:hover {
+    color: #007bff;
 }
 
 .logo {
     font-size: 45px;
     font-weight: bold;
     margin-left: 20px;
+    color: #007bff;
 }
 
 .link-active {
-    color: royalblue;
+    color: #007bff;
+    font-weight: bold;
 }
-/*
-
 
 .navbar {
     margin: 0 auto;
@@ -89,21 +96,11 @@ header li a {
     font-size: 20px;
     color: #2c3e50;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .nav-item:hover {
-    color: #2c3e50;
+    color: #007bff;
 }
-
-
-.link-active {
-  background-color: #04AA6D;
-  color: #f2f2f2;
-}
-
-.link-active:hover {
-  background-color: #04AA6D;
-}
-*/
 
 </style>

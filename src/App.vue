@@ -12,19 +12,20 @@
 import { defineComponent } from 'vue';
 import NavBar from './components/NavBar.vue'
 import NeedAlgoSigner from './components/NeedAlgoSigner.vue'
+import DarkModeSwitch from './components/DarkModeSwitch.vue'
 declare var AlgoSigner: any; // eslint-disable-line
-
-
 
 export default defineComponent({
     name: 'App',
     components: {
         NavBar,
         NeedAlgoSigner,
+        DarkModeSwitch
     },
     data() {
         return {
             loading: true,
+            isDarkModeEnabled: false
         }
     },
     computed: {
@@ -45,12 +46,17 @@ export default defineComponent({
             } else {
                 setTimeout(() => this.checkAlgoSigner(), 1);
             }
+        },
+        onSwitched(isEnabled: boolean) {
+            this.isDarkModeEnabled = isEnabled;
+            if (isEnabled) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
         }
-        
     }
 });
-
-
 </script>
 
 <style>
@@ -72,7 +78,6 @@ export default defineComponent({
 .fade-leave-to {
   opacity: 0;
 }
-
 
 html, body {
   width: 100%;
@@ -98,8 +103,12 @@ body {
     }
 }
 
+body.dark-mode {
+    background: #121212;
+    color: #ffffff;
+}
+
+#app.dark-mode {
+    color: #ffffff;
+}
 </style>
-
-
-
-
