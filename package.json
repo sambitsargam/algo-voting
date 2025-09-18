@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
-   "dependencies": {
+  "dependencies": {
+    "@walletconnect/web3-provider": "^1.8.0",
     "algosdk": "^3.4.0",
     "core-js": "^3.45.1",
     "js-base64": "^3.7.8",
