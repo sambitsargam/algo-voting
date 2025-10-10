@@ -10,7 +10,7 @@
   "dependencies": {
     "@walletconnect/web3-provider": "^1.8.0",
     "algosdk": "^3.5.2",
-    "core-js": "^3.45.1",
+    "core-js": "^3.46.0",
     "js-base64": "^3.7.8",
     "vue": "^3.5.22",
     "vue-router": "^4.5.1",
