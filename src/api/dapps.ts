@@ -53,10 +53,10 @@ export default {
 
             // Get all global state variables and decode them
             app['params']['global-state'].forEach((item: any) => {
-                const key = Buffer.from(item['key'], 'base64').toString('ascii');
+                const key = new TextDecoder().decode(Base64.toUint8Array(item['key']));
 
-                const val_str = Buffer.from(item['value']['bytes'], 'base64').toString('ascii');
-                const val_uint = item['value']['uint'];
+                const val_str = item['value'] && item['value']['bytes'] ? new TextDecoder().decode(Base64.toUint8Array(item['value']['bytes'])) : '';
+                const val_uint = item['value'] && item['value']['uint'] ? item['value']['uint'] : 0;
                 switch (key) {
                     case "Team1":
                         dapp.Team1.Name = val_str;
@@ -80,7 +80,7 @@ export default {
 
                     case "LimitDate":
                     case "EndDate":
-                        dapp[key] = val_uint;
+                        (dapp as any)[key] = val_uint;
                         break;
 
                     case "Escrow": {
@@ -171,14 +171,14 @@ export default {
                     }
 
                     app['key-value'].forEach((item: any) => {
-                        const key = Buffer.from(item['key'], 'base64').toString('ascii');
+                        const key = new TextDecoder().decode(Base64.toUint8Array(item['key']));
                         switch (key) {
                             case "MyTeam":
-                                localState.Team = Buffer.from(item['value']['bytes'], 'base64').toString('ascii');
+                                localState.Team = item['value'] && item['value']['bytes'] ? new TextDecoder().decode(Base64.toUint8Array(item['value']['bytes'])) : '';
                                 break;
 
                             case "MyBet":
-                                localState.Bet = item['value']['uint']
+                                localState.Bet = item['value'] && item['value']['uint'] ? item['value']['uint'] : 0;
                                 break;
 
                             default:
@@ -206,7 +206,7 @@ export default {
             path: '/v2/transactions/params'
         });
 
-        const params: algosdk.SuggestedParams = {
+        const params: any = {
             fee: suggestedParams["min-fee"],
             flatFee: true,
             firstRound: suggestedParams["last-round"],
@@ -235,9 +235,9 @@ export default {
             from: address,
             amount: amount,
             ...params,
-        });
+        } as any);
         const myTeam = new TextEncoder().encode(teamName);
-        const tx1 = algosdk.makeApplicationOptInTxn(
+        const tx1 = (algosdk as any).makeApplicationOptInTxn(
             address,
             params,
             dapp.Id,
@@ -313,8 +313,8 @@ export default {
             throw Error(`Escrow program hash ${response['hash']} did not equal the dapps's escrow address ${dls.dapp.Escrow}`)
         }
 
-        const program = new Uint8Array(Buffer.from(response['result'], 'base64'));
-        return algosdk.makeLogicSig(program);
+        const program = Base64.toUint8Array(response['result']);
+        return (algosdk as any).makeLogicSig(program);
     },
 
     /**
@@ -343,12 +343,12 @@ export default {
             from: lsig.address(),
             amount: amount,
             ...params
-        })
+        } as any)
 
         const args: Uint8Array[] = [];
-        args.push(new Uint8Array(Buffer.from('claim')))
+        args.push(new TextEncoder().encode('claim'))
 
-        const txn_2 = algosdk.makeApplicationNoOpTxn(dls.account.address, params, dls.dapp.Id, args);
+        const txn_2 = (algosdk as any).makeApplicationNoOpTxn(dls.account.address, params, dls.dapp.Id, args);
 
         algosdk.assignGroupID([txn_1, txn_2]);
 
@@ -397,12 +397,12 @@ export default {
             from: lsig.address(),
             amount: amount,
             ...params
-        })
+        } as any)
 
         const args: Uint8Array[] = [];
-        args.push(new Uint8Array(Buffer.from('reclaim')))
+        args.push(new TextEncoder().encode('reclaim'))
 
-        const txn_2 = algosdk.makeApplicationNoOpTxn(dls.account.address, params, dls.dapp.Id, args);
+        const txn_2 = (algosdk as any).makeApplicationNoOpTxn(dls.account.address, params, dls.dapp.Id, args);
 
         algosdk.assignGroupID([txn_1, txn_2]);
 
