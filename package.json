@@ -26,7 +26,7 @@
     "@vue/compiler-sfc": "^3.5.32",
     "@vue/eslint-config-typescript": "^14.7.0",
     "eslint": "^10.2.1",
-    "eslint-plugin-vue": "^10.8.0",
+    "eslint-plugin-vue": "^10.9.0",
     "particles-bg-vue": "^1.3.5",
     "particles.vue3": "^2.12.0",
     "typescript": "~6.0.3",
